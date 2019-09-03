@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+
+<title>新規登録</title>
+</head>
+<body>
+	<div class="col-sm-5">
+		<div class="page-header">
+			<h1>SignUp</h1>
+		</div>
+		<form method="post" th:action="@{/signup}" th:object="${signupForm}">
+			<table class="table table-borderedtable-hover">
+				<tr>
+					<th class="active col-sm-3">ユーザID</th>
+					<td>
+						<!--th:classappendはエラーメッセージ用のCSS-->
+						<!--hasErrorはif文を使ってtrueの場合のみhas-errorクラスを追加-->
+						<div class="form-group"
+							th:classappend="${#fields.hasErrors('userId')}?'has-error'">
+							<input type="text" th:field="*{userId}" />
+							<!--個別エラーメッセージの表示-->
+							<span class="textdanger" th:if="${#fields.hasErrors('userId')}"
+								th:errors="*{userId}">userId error</span>
+
+						</div></td>
+				</tr>
+				<tr>
+					<th class="active">パスワード</th>
+					<td><div class="form-group"
+							th:classappend="${#fields.hasErrors('password')}?'has-error'">
+							<input type="text" th:field="*{password}" placeholder="英数字4桁以上" />
+							<span class="textdanger" th:if="${#fields.hasErrors('password')}"
+								th:errors="*{password}">password error</span>
+						</div></td>
+				</tr>
+				<tr>
+					<th class="active">ユーザー名</th>
+					<td><div class="form-group"
+							th:classappend="${#fields.hasErrors('userName')}?'has-error'">
+							<input type="text" th:field="*{userName}" />
+							<span class="textdanger" th:if="${#fields.hasErrors('userName')}"
+								th:errors="*{userName}">userName error</span>
+						</div></td>
+				</tr>
+				<tr>
+					<th class="active">誕生日</th>
+					<td><div class="form-group"
+							th:classappend="${#fields.hasErrors('birthday')}?'has-error'">
+							<input type="text" th:field="*{birthday}" placeholder="yyyy/MM/dd"/>
+							<span class="textdanger" th:if="${#fields.hasErrors('birthday')}"
+								th:errors="*{birthday}">birthday error</span>
+						</div></td>
+				</tr>
+				<tr>
+					<th class="active">年齢</th>
+					<td><div class="form-group"
+							th:classappend="${#fields.hasErrors('age')}?'has-error'">
+							<input type="text" th:field="*{age}"/>
+							<span class="textdanger" th:if="${#fields.hasErrors('age')}"
+								th:errors="*{age}">age error</span>
+						</div></td>
+				</tr>
+				<tr>
+					<th class="active">結婚</th>
+					<td><div class="form-group">
+							<div th:each="item:${radioMarriage}">
+								<!-- th:textはMapのkeyを画面に表示 th:valueはMapのvalueを画面から送る -->
+								<input type="radio" name="radioMarrige" th:text="${item.key}"
+									th:value="${item.value}" th:field="*{marriage}">
+									<span class="textdanger" th:if="${#fields.hasErrors('marriage')}"
+								th:errors="*{marriage}">marriage error</span>
+							</div>
+						</div></td>
+				</tr>
+			</table>
+			<button class="btn btn-primary" type="submit">ユーザー登録</button>
+		</form>
+	</div>
+</body>
+</html>
