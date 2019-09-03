@@ -1,6 +1,8 @@
 package com.example.demo.login.domain;
 
-import java.sql.Date;
+
+
+import java.util.Date;
 
 import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.Email;
@@ -28,6 +30,7 @@ public class SignupForm{
 	@NotBlank
 	private String userName;//ユーザー名
 	@NotNull
+	//@DateTimeFormat 画面から送られてくる文字列を日付型に変更する
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date birthday;//誕生日
 	@NotNull
