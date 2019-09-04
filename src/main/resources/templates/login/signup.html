@@ -25,7 +25,7 @@
 							th:classappend="${#fields.hasErrors('userId')}?'has-error'">
 							<input type="text" th:field="*{userId}" />
 							<!--個別エラーメッセージの表示-->
-							<span class="textdanger" th:if="${#fields.hasErrors('userId')}"
+							<span class="text-danger" th:if="${#fields.hasErrors('userId')}"
 								th:errors="*{userId}">userId error</span>
 
 						</div></td>
@@ -35,7 +35,7 @@
 					<td><div class="form-group"
 							th:classappend="${#fields.hasErrors('password')}?'has-error'">
 							<input type="text" th:field="*{password}" placeholder="英数字4桁以上" />
-							<span class="textdanger" th:if="${#fields.hasErrors('password')}"
+							<span class="text-danger" th:if="${#fields.hasErrors('password')}"
 								th:errors="*{password}">password error</span>
 						</div></td>
 				</tr>
@@ -44,7 +44,7 @@
 					<td><div class="form-group"
 							th:classappend="${#fields.hasErrors('userName')}?'has-error'">
 							<input type="text" th:field="*{userName}" />
-							<span class="textdanger" th:if="${#fields.hasErrors('userName')}"
+							<span class="text-danger" th:if="${#fields.hasErrors('userName')}"
 								th:errors="*{userName}">userName error</span>
 						</div></td>
 				</tr>
@@ -53,7 +53,7 @@
 					<td><div class="form-group"
 							th:classappend="${#fields.hasErrors('birthday')}?'has-error'">
 							<input type="text" th:field="*{birthday}" placeholder="yyyy/MM/dd"/>
-							<span class="textdanger" th:if="${#fields.hasErrors('birthday')}"
+							<span class="text-danger" th:if="${#fields.hasErrors('birthday')}"
 								th:errors="*{birthday}">birthday error</span>
 						</div></td>
 				</tr>
@@ -62,7 +62,7 @@
 					<td><div class="form-group"
 							th:classappend="${#fields.hasErrors('age')}?'has-error'">
 							<input type="text" th:field="*{age}"/>
-							<span class="textdanger" th:if="${#fields.hasErrors('age')}"
+							<span class="text-danger" th:if="${#fields.hasErrors('age')}"
 								th:errors="*{age}">age error</span>
 						</div></td>
 				</tr>
@@ -73,7 +73,7 @@
 								<!-- th:textはMapのkeyを画面に表示 th:valueはMapのvalueを画面から送る -->
 								<input type="radio" name="radioMarrige" th:text="${item.key}"
 									th:value="${item.value}" th:field="*{marriage}">
-									<span class="textdanger" th:if="${#fields.hasErrors('marriage')}"
+									<span class="text-danger" th:if="${#fields.hasErrors('marriage')}"
 								th:errors="*{marriage}">marriage error</span>
 							</div>
 						</div></td>

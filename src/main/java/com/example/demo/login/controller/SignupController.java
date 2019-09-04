@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.login.domain.SignupForm;
+import com.example.demo.login.domain.model.GroupOrder;
 
-@Controller
+@Controller //(これらのアノテーションがついてるものをBeanといい、DIコンテナ上で管理するクラスをBeanという)
 public class SignupController {
 	private Map<String, String> radioMarriage;
 	private Map<String, String>initRadioMarriage(){
@@ -39,7 +40,8 @@ public class SignupController {
 	@PostMapping("/signup")
 	//フォームクラスをmodelに登録
 	//@Validatedでバリテーション実施。BindingResultクラスに入っている
-	public String postSignUp(@ModelAttribute @Validated SignupForm form, BindingResult bindingResult, Model model) {
+	//GroupOrderからバリテーションのグループを保持
+	public String postSignUp(@ModelAttribute @Validated(GroupOrder.class) SignupForm form, BindingResult bindingResult, Model model) {
 		//データバインドの失敗の場合、登録画面に戻る
 		if(bindingResult.hasErrors()) {
 			//Getリクエストメソッドを呼び出す。
